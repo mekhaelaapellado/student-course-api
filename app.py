@@ -1,8 +1,20 @@
-
 from flask import Flask, jsonify
 import os
 
 app = Flask(__name__)
+
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "message": "Welcome to Student Course API!",
+        "status": "running",
+        "available_endpoints": [
+            "/api/health",
+            "/api/courses",
+            "/api/courses/1",
+            "/api/courses/9999"
+        ]
+    }), 200
 
 courses = [
     {
